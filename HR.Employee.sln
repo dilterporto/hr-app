@@ -4,7 +4,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{9AFC6782-5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{530B8D1B-FEEC-494A-82B8-9A3E0D6BB3D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.Employee.Api", "src\HR.Employee.Api\HR.Employee.Api.csproj", "{8D9F30A3-F032-476E-88D3-ABA2655EB9BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.Api", "src\HR.Api\HR.Api.csproj", "{8D9F30A3-F032-476E-88D3-ABA2655EB9BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.Abstractions", "src\HR.Abstractions\HR.Abstractions.csproj", "{A07E0DC3-F72A-4957-9926-B14F68C3FB12}"
 EndProject
@@ -14,11 +14,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.Employee.Application", "src\HR.Employee.Application\HR.Employee.Application.csproj", "{47D121FB-284C-432A-9684-15763EF9D4F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.Application", "src\HR.Application\HR.Application.csproj", "{47D121FB-284C-432A-9684-15763EF9D4F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.Employee.Domain", "src\HR.Employee.Domain\HR.Employee.Domain.csproj", "{9588E2D5-D95F-4833-9D77-8F54C6143EFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.Domain", "src\HR.Domain\HR.Domain.csproj", "{9588E2D5-D95F-4833-9D77-8F54C6143EFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.Employee.Persistence", "src\HR.Employee.Persistence\HR.Employee.Persistence.csproj", "{23DD95D5-F2FE-460F-B2BC-27CAB6C9BC77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.Persistence", "src\HR.Persistence\HR.Persistence.csproj", "{23DD95D5-F2FE-460F-B2BC-27CAB6C9BC77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{829CEA01-8759-48DE-B2F9-2350D18A40CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.Tests", "tests\HR.Tests\HR.Tests.csproj", "{5F027441-E584-4662-AE64-FA44489336E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,11 +50,16 @@ Global
 		{23DD95D5-F2FE-460F-B2BC-27CAB6C9BC77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23DD95D5-F2FE-460F-B2BC-27CAB6C9BC77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23DD95D5-F2FE-460F-B2BC-27CAB6C9BC77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F027441-E584-4662-AE64-FA44489336E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F027441-E584-4662-AE64-FA44489336E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F027441-E584-4662-AE64-FA44489336E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F027441-E584-4662-AE64-FA44489336E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A07E0DC3-F72A-4957-9926-B14F68C3FB12} = {530B8D1B-FEEC-494A-82B8-9A3E0D6BB3D9}
 		{47D121FB-284C-432A-9684-15763EF9D4F6} = {9AFC6782-5619-410C-B8FC-80AB2A336333}
 		{9588E2D5-D95F-4833-9D77-8F54C6143EFB} = {9AFC6782-5619-410C-B8FC-80AB2A336333}
 		{23DD95D5-F2FE-460F-B2BC-27CAB6C9BC77} = {9AFC6782-5619-410C-B8FC-80AB2A336333}
+		{5F027441-E584-4662-AE64-FA44489336E0} = {829CEA01-8759-48DE-B2F9-2350D18A40CF}
 	EndGlobalSection
 EndGlobal

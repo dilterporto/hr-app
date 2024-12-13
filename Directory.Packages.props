@@ -1,6 +1,6 @@
 <Project>
   <ItemGroup>
-    <PackageVersion Include="AutoFixture" Version="5.0.0-preview0011" />
+    <PackageVersion Include="AutoFixture" Version="4.18.1" />
     <PackageVersion Include="AutoMapper" Version="13.0.1" />
     <PackageVersion Include="CSharpFunctionalExtensions" Version="2.42.0" />
     <PackageVersion Include="FastEndpoints" Version="5.26.0.9-beta" />

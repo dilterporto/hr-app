@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Mappings\" />
+      <Folder Include="UseCases\ChangeEmployeeDepartment\" />
+      <Folder Include="UseCases\ChangeEmployee\" />
+      <Folder Include="UseCases\GetAllEmployees\" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\HR.Domain\HR.Domain.csproj" />
+      <ProjectReference Include="..\HR.Persistence\HR.Persistence.csproj" />
+    </ItemGroup>
+
+</Project>
