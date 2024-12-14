@@ -21,7 +21,7 @@
       <ProjectReference Include="..\HR.Application\HR.Application.csproj" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Apis\Departments\" />
+      <Folder Include="Extensions\" />
     </ItemGroup>
 
 </Project>

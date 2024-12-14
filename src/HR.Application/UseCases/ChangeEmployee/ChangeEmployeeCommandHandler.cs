@@ -7,7 +7,8 @@ using HR.Domain.Shared.ValueObjects;
 
 namespace HR.Application.UseCases.ChangeEmployee;
 
-public class ChangeEmployeeCommandHandler(IEmployeeRepository repository, IMapper mapper) : ICommandHandler<ChangeEmployeeCommandHandler.Command, Result<EmployeeResponse>>
+public class ChangeEmployeeCommandHandler(IEmployeeRepository repository, IMapper mapper) 
+  : ICommandHandler<ChangeEmployeeCommandHandler.Command, Result<EmployeeResponse>>
 {
   public record Command(
     Guid EmployeeId, 

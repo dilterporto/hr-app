@@ -3,9 +3,7 @@ using FastEndpoints;
 using FastEndpoints.Swagger;
 using HR.Application;
 using HR.Application.UseCases.CreateEmployee;
-using HR.Domain.Aggregates.Departments;
 using HR.Persistence;
-using HR.Persistence.Writing.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +25,7 @@ builder.Services
       s.Title = "Human Resource APIs";
       s.Version = "v0";
     };
+    o.AutoTagPathSegmentIndex = 0;
   });
 
 var app = builder.Build();

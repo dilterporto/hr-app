@@ -13,6 +13,7 @@ public class PostEmployeeEndpoint(IMediator mediator, IMapper mapper) : Endpoint
   public override void Configure()
   {
     Post("api/employees");
+    Description(x => x.WithTags("Employees"));
     AllowAnonymous();
   }
   
@@ -20,9 +21,9 @@ public class PostEmployeeEndpoint(IMediator mediator, IMapper mapper) : Endpoint
   {
     var command = mapper.Map<CreateEmployeeCommandHandler.Command>(request);
     var result = await mediator.Send(command, cancellationToken);
-    await HandleResult(result, cancellationToken);
+    if (result.IsSuccess)
+      await SendAsync(result.Value, cancellation: cancellationToken);
+    else
+      await SendErrorsAsync(cancellation: cancellationToken);
   }
-
-  private Task HandleResult(Result<EmployeeResponse> result, CancellationToken cancellationToken) =>
-    result.IsSuccess ? SendAsync(result.Value, cancellation: cancellationToken) : SendErrorsAsync(cancellation: cancellationToken);
 }
