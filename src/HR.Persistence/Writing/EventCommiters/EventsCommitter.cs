@@ -14,10 +14,12 @@ public class EventsCommitter : IEventsCommiter
 
   public EventsCommitter(
     IEventCommitter<EmployeeCreatedEvent> employeeCreatedEventCommitter,
+    IEventCommitter<EmployeeChangedEvent> employeeChangedEventCommitter,
     ILogger<EventsCommitter> logger)
   {
     _logger = logger;
     _eventCommiters.Add(typeof(EmployeeCreatedEvent), RunAsync(employeeCreatedEventCommitter));
+    _eventCommiters.Add(typeof(EmployeeChangedEvent), RunAsync(employeeChangedEventCommitter));
   }
   
   private static Func<IDomainEvent, Task> RunAsync<TEvent>(IEventCommitter<TEvent> accountEventCommiter)

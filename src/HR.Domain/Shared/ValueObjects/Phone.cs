@@ -2,7 +2,7 @@
 
 public class Phone(int number)
 {
-  private int Number { get; } = number;
+  public int Number { get; } = number;
 
   public static implicit operator Phone(string number) 
     => new(int.Parse(number.Replace("-", string.Empty)));

@@ -1,5 +1,6 @@
 using AutoMapper;
 using HR.Application.Contracts;
+using HR.Application.UseCases.ChangeEmployee;
 using HR.Application.UseCases.CreateEmployee;
 using HR.Domain.Shared.ValueObjects;
 using HR.Employee.Api.Apis.Employees.Messages;
@@ -12,6 +13,7 @@ public class EmployeeMapping : Profile
   public EmployeeMapping()
   {
     CreateMap<CreateEmployeeRequest, CreateEmployeeCommandHandler.Command>();
+    CreateMap<ChangeEmployeeRequest, ChangeEmployeeCommandHandler.Command>();
     CreateMap<EmployeeProjection, EmployeeResponse>()
       .ForMember(x => x.Address, x => x.MapFrom(y => new Address()
       {

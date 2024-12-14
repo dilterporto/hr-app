@@ -1,4 +1,4 @@
-using AutoFixture;
+﻿using AutoFixture;
 using AutoMapper;
 using CSharpFunctionalExtensions;
 using HR.Application.Contracts;
@@ -8,8 +8,19 @@ using Moq;
 
 namespace HR.Tests.Application.UseCases;
 
-public class CreateEmployeeCommandHandlerTests
+public class ChangeEmployeeCommandHandlerTests
 {
+  private readonly CreateEmployeeCommandHandler _handler;
+  
+  public ChangeEmployeeCommandHandlerTests()
+  {
+    var repository = new Mock<IEmployeeRepository>();
+    var mapper = new Mock<IMapper>();
+    var employeeFactory = new Mock<IEmployeeFactory>();
+    
+    _handler = new CreateEmployeeCommandHandler(repository.Object, mapper.Object, employeeFactory.Object);
+  }
+  
   [Fact]
   public async Task HandleAsync_WhenCalled_ShouldCreateEmployee()
   {
@@ -49,10 +60,7 @@ public class CreateEmployeeCommandHandlerTests
     var cancellationToken = CancellationToken.None;
     
     var mapper = new Mock<IMapper>();
-    mapper.Setup(x => x.Map<EmployeeState>(command)).Returns(new EmployeeState());
-    
     var repository = new Mock<IEmployeeRepository>();
-    
     var employeeFactory = new Mock<IEmployeeFactory>();
     employeeFactory
       .Setup(x => x.CreateAsync(It.IsAny<EmployeeState>()))
@@ -69,7 +77,7 @@ public class CreateEmployeeCommandHandlerTests
   }
   
   [Fact]
-  public async Task HandleAsync_WhenRepositorySaveFails_ShouldReturnFailure()
+  public async Task HandleAsync_WhenRepositoryFails_ShouldReturnFailure()
   {
     // Arrange
     var command = new Fixture().Create<CreateEmployeeCommandHandler.Command>();

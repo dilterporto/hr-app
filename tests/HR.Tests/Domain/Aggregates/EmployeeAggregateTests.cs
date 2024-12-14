@@ -65,5 +65,61 @@ public class EmployeeAggregateTests
     // Assert
     Assert.Single(employee.UncommittedEvents);
   }
+  
+  [Fact]
+  public void GivenAValidState_WhenCreatingAnAggregate_ThenShouldContainEmployeeCreatedEvent()
+  {
+    // Arrange
+    var state = new EmployeeState
+    {
+      FirstName = "John",
+      LastName = "Doe",
+      Address = new Address
+      {
+        Line1 = "123 Elm St",
+        City = "Springfield",
+        State = "IL",
+        ZipCode = "62701"
+      },
+      PhoneNumber = "555-555",
+      HireDate = DateTime.Now,
+      DepartmentId = Guid.NewGuid()
+    };
+    
+    // Act
+    var employee = new Employee(state);
+    
+    // Assert
+    Assert.IsType<EmployeeCreatedEvent>(employee.UncommittedEvents.First());
+  }
+  
+  [Fact]
+  public void GivenAValidState_WhenChangeAnAggregate_ThenShouldContainOneUncommitedEvent()
+  {
+    // Arrange
+    var state = new EmployeeState
+    {
+      FirstName = "John",
+      LastName = "Doe",
+      Address = new Address
+      {
+        Line1 = "123 Elm St",
+        City = "Springfield",
+        State = "IL",
+        ZipCode = "62701"
+      },
+      PhoneNumber = "555-555",
+      HireDate = DateTime.Now,
+      DepartmentId = Guid.NewGuid()
+    };
+    
+    var employee = new Employee(state);
+    
+    // Act
+    employee.Change("Jane", "Doe", "555-555");
+    
+    // Assert
+    Assert.Equal(2, employee.UncommittedEvents.Count);
+  }
 }
 

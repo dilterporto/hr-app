@@ -27,7 +27,7 @@ public static class DependencyExtensions
     services.AddScoped<IDepartmentRepository, DepartmentRepository>();
     services.AddScoped<IEventsCommiter, EventsCommitter>();
     services.AddScoped<IEventCommitter<EmployeeCreatedEvent>, EmployeeCreatedEventCommitter>();
-
+    services.AddScoped<IEventCommitter<EmployeeChangedEvent>, EmployeeChangedEventCommitter>();
     services.AddScoped(typeof(IPipelineBehavior<,>), typeof(UnitOfWorkPipelineBehavior<,>));
     services.AddScoped<IProjectionsReader, ProjectionsReader>();
     return services;

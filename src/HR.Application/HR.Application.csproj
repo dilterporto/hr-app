@@ -7,9 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Mappings\" />
       <Folder Include="UseCases\ChangeEmployeeDepartment\" />
-      <Folder Include="UseCases\ChangeEmployee\" />
       <Folder Include="UseCases\GetAllEmployees\" />
     </ItemGroup>
     <ItemGroup>
