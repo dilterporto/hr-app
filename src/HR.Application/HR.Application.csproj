@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <Folder Include="UseCases\ChangeEmployeeDepartment\" />
-      <Folder Include="UseCases\GetAllEmployees\" />
     </ItemGroup>
     <ItemGroup>
       <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" />

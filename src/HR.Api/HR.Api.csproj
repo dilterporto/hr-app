@@ -20,5 +20,8 @@
       <ProjectReference Include="..\HR.Abstractions\HR.Abstractions.csproj" />
       <ProjectReference Include="..\HR.Application\HR.Application.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Apis\Departments\" />
+    </ItemGroup>
 
 </Project>
