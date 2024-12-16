@@ -7,5 +7,5 @@ public class Phone(int number)
   public static implicit operator Phone(string number) 
     => new(int.Parse(number.Replace("-", string.Empty)));
 
-  public override string ToString() => Number.ToString("000-000-0000");
+  public override string ToString() => Number.ToString("000-000");
 }

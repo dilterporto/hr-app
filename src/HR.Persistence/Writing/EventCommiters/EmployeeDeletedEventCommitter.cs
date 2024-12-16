@@ -19,7 +19,7 @@ public class EmployeeDeletedEventCommitter(ProjectionsDbContext projectionsDbCon
       return;
     }
 
-    projectionsDbContext.Remove(employeeProjection.Id);
+    projectionsDbContext.Remove(employeeProjection);
     await projectionsDbContext.SaveChangesAsync();
     
     logger.LogInformation("[Persistence] Employee projection with id {Id} deleted", @event.AggregateId);

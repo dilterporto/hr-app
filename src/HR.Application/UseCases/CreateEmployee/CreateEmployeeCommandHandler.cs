@@ -24,16 +24,10 @@ public class CreateEmployeeCommandHandler(IEmployeeRepository repository, IMappe
     }
   }
   
-  public async Task<Result<EmployeeResponse>> Handle(Command command, CancellationToken cancellationToken)
-  {
-    // var department = new DepartmentState() { Name = "Department 1", };
-    //   
-    // await departmentRepository.SaveAsync(new Department(department));
-    
-    return await employeeFactory
+  public async Task<Result<EmployeeResponse>> Handle(Command command, CancellationToken cancellationToken) =>
+    await employeeFactory
       .CreateAsync(mapper.Map<EmployeeState>(command))
       .ToResult("Error creating employee")
       .Check(repository.SaveAsync)
       .Map(employee => mapper.Map<EmployeeResponse>(employee.State));
-  }
 }

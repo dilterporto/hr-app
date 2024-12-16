@@ -1,5 +1,6 @@
 using HR.Abstractions.DDD;
 using HR.Abstractions.EventSourcing;
+using HR.Domain.Aggregates.Departments;
 using HR.Domain.Aggregates.Employees;
 using Microsoft.Extensions.Logging;
 
@@ -15,11 +16,15 @@ public class EventsCommitter : IEventsCommiter
   public EventsCommitter(
     IEventCommitter<EmployeeCreatedEvent> employeeCreatedEventCommitter,
     IEventCommitter<EmployeeChangedEvent> employeeChangedEventCommitter,
+    IEventCommitter<EmployeeDeletedEvent> employeeDeletedEventCommitter,
+    IEventCommitter<DepartmentCreatedEvent> departmentCreatedEventCommitter,
     ILogger<EventsCommitter> logger)
   {
     _logger = logger;
     _eventCommiters.Add(typeof(EmployeeCreatedEvent), RunAsync(employeeCreatedEventCommitter));
     _eventCommiters.Add(typeof(EmployeeChangedEvent), RunAsync(employeeChangedEventCommitter));
+    _eventCommiters.Add(typeof(EmployeeDeletedEvent), RunAsync(employeeDeletedEventCommitter));
+    _eventCommiters.Add(typeof(DepartmentCreatedEvent), RunAsync(departmentCreatedEventCommitter));
   }
   
   private static Func<IDomainEvent, Task> RunAsync<TEvent>(IEventCommitter<TEvent> accountEventCommiter)

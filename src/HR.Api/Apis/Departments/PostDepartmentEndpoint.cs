@@ -19,7 +19,7 @@ public class PostDepartmentEndpoint(IMediator mediator) : Endpoint<CreateDepartm
     var command = new CreateDepartmentCommandHandler.Command(request.Name!);
     var result = await mediator.Send(command, cancellationToken);
     if (result.IsSuccess)
-      await SendAsync(result, cancellation: cancellationToken);
+      await SendAsync(result.Value, cancellation: cancellationToken);
     else
       await SendErrorsAsync(cancellation: cancellationToken);
   }
