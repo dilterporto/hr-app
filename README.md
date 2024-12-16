@@ -12,12 +12,12 @@ Following the **layered architecture** from Domain Driven Design the solution co
 
 - Presentation (Rest API)
 - Application (Command and Query Handlers representing the *use cases*)
-- Domain (Agreggates, Repositories, Entities ...)
+- Domain (Aggregates, Repositories, Entities ...)
 - Infrastructure (Persistence, Reading, Caching)
 
 ## Solution features
 
-The features requested were implemented following the definition of *use cases* on the *Application Layer* and exposed via HTTP throught a REST API.
+The requested features were implemented following the definition of use cases on the Application Layer and exposed via HTTP through a REST API.
 
 *Employee API*
 - Create employee
@@ -30,12 +30,12 @@ The features requested were implemented following the definition of *use cases* 
 - Get all departments
 - Create department
 
-Using the *writing* and *reading* segregation sides the features that represents the change of the state's application were represented by *commands* and the actions without changes by *queries* and [exposed by respective HTTP methods via a REST API](https://www.infoq.com/articles/rest-api-on-cqrs/).
+Using the *writing* and *reading* segregation sides, the features representing the change of the state's application were represented by *commands*, and the actions without changes by *queries* and [exposed by respective HTTP methods via a REST API](https://www.infoq.com/articles/rest-api-on-cqrs/).
 
 
 ## Running the solution
 
-To run the solution will be necessary to have a **git** SCM to clone from Bitbucket and Docker to execute in a containerized environment.
+To run the solution, it will be necessary to have a **git** SCM to clone from Github and Docker to execute in a containerized environment.
 
 ### Requirements
 
@@ -44,8 +44,8 @@ To run the solution will be necessary to have a **git** SCM to clone from Bitbuc
 
 ### Instructions
 
-- clone the code from Giuthub repository
-- on the root folder run the **docker-compose** command to start services on development (local) environment
+- clone the code from GitHub repository
+- on the root folder run the **docker-compose** command to start services on the development (local) environment
 
 
     ```shell
@@ -57,7 +57,7 @@ To run the solution will be necessary to have a **git** SCM to clone from Bitbuc
     > dotnet run --project src/HR.Api/HR.Api.csproj 
     ```
 
-Once the app is running locally via **Docker** the following links will available:
+Once the app is running locally via **Docker** the following links will be available:
 
 - [**Swagger**](http://localhost:5186/swagger)
 
