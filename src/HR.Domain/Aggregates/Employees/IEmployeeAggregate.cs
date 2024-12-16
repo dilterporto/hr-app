@@ -27,6 +27,5 @@ public interface IEmployeeAggregate : IAggregateRoot
   /// <summary>
   /// Delete employee
   /// </summary>
-  /// <param name="reason"></param>
-  void Delete(string reason);
+  void Delete();
 }

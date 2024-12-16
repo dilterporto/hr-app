@@ -2,7 +2,7 @@ namespace HR.Domain.Aggregates.Employees;
 
 public partial class Employee
 {
-  public void Delete(string reason)
+  public void Delete()
     => ApplyChange(new EmployeeDeletedEvent());
   
   public void Apply(EmployeeDeletedEvent _)
