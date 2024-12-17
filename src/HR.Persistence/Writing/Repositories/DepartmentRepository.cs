@@ -5,8 +5,16 @@ using Microsoft.Extensions.Logging;
 
 namespace HR.Persistence.Writing.Repositories;
 
-public class DepartmentRepository(EventsDbContext dbContext, IEventsCommiter iEventsCommiter, ILogger<IDepartmentRepository> logger) 
-  : Repository<Department, IDepartmentRepository>(dbContext, iEventsCommiter, logger), IDepartmentRepository
+public class DepartmentRepository : Repository<Department, IDepartmentRepository>, IDepartmentRepository
 {
-  
+  public DepartmentRepository(
+    EventsDbContext dbContext, 
+    IEventsCommiter eventsCommitter, 
+    ILogger<IDepartmentRepository> logger,
+    // events
+    IEventCommitter<DepartmentCreatedEvent> departmentCreatedEventCommitter) 
+    : base(dbContext, eventsCommitter, logger)
+  {
+    eventsCommitter.AddAsync(departmentCreatedEventCommitter);
+  }
 }

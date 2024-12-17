@@ -8,8 +8,9 @@ using Newtonsoft.Json;
 
 namespace HR.Persistence.Writing;
 
-public class Repository<TAggregate, TRepository>(EventsDbContext dbContext, IEventsCommiter iEventsCommiter, ILogger<TRepository> logger)
-  where TAggregate : AggregateRoot
+public class Repository<TAggregate, TRepository>(
+  EventsDbContext dbContext, 
+  IEventsCommiter eventsCommitter, ILogger<TRepository> logger) where TAggregate : AggregateRoot
 {
   public async Task<Maybe<TAggregate>> LoadByIdAsync(Guid id)
   {
@@ -52,7 +53,7 @@ public class Repository<TAggregate, TRepository>(EventsDbContext dbContext, IEve
   }
 
   private async Task CommitEvents(TAggregate aggregate) 
-    => await iEventsCommiter.CommitAllAsync(aggregate.UncommittedEvents);
+    => await eventsCommitter.CommitAllAsync(aggregate.UncommittedEvents);
 
   private void PersistAggregateEvents(TAggregate aggregate)
   {

@@ -9,5 +9,6 @@ public interface IEventCommitter<in TEvent> where TEvent : IDomainEvent
 
 public interface IEventsCommiter
 {
+  void AddAsync<TEvent>(IEventCommitter<TEvent> eventCommitter) where TEvent : IDomainEvent;
   Task CommitAllAsync(IEnumerable<IDomainEvent> events);
 }
