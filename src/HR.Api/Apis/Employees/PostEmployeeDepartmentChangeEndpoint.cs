@@ -1,7 +1,5 @@
-using CSharpFunctionalExtensions;
-using FastEndpoints;
-using HR.Application.Contracts;
-using HR.Application.UseCases.CreateEmployee;
+﻿using FastEndpoints;
+using HR.Application.UseCases.ChangeEmployeeDepartment;
 using HR.Employee.Api.Apis.Employees.Messages;
 using HR.Employee.Api.Apis.Employees.Validation;
 using MediatR;
@@ -9,19 +7,19 @@ using IMapper = AutoMapper.IMapper;
 
 namespace HR.Employee.Api.Apis.Employees;
 
-public class PostEmployeeEndpoint(IMediator mediator, IMapper mapper) : Endpoint<CreateEmployeeRequest, EmployeeResponse>
+public class PostEmployeeDepartmentChangeEndpoint(IMediator mediator, IMapper mapper) : Endpoint<ChangeEmployeeDepartmentRequest>
 {
   public override void Configure()
   {
-    Post("api/employees");
+    Post("api/employees/{EmployeeId}/departments");
     Description(x => x.WithTags("Employees"));
-    Validator<CreateEmployeeValidator>();
+    Validator<ChangeEmployeeDepartmentValidator>();
     AllowAnonymous();
   }
   
-  public override async Task HandleAsync(CreateEmployeeRequest request, CancellationToken cancellationToken)
+  public override async Task HandleAsync(ChangeEmployeeDepartmentRequest request, CancellationToken cancellationToken)
   {
-    var command = mapper.Map<CreateEmployeeCommandHandler.Command>(request);
+    var command = mapper.Map<ChangeEmployeeDepartmentCommandHandler.Command>(request);
     var result = await mediator.Send(command, cancellationToken);
     if (result.IsSuccess)
       await SendAsync(result.Value, cancellation: cancellationToken);

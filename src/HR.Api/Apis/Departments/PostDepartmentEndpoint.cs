@@ -1,6 +1,8 @@
 ﻿using FastEndpoints;
 using HR.Application.UseCases.CreateDepartment;
 using HR.Employee.Api.Apis.Departments.Messages;
+using HR.Employee.Api.Apis.Departments.Validation;
+using HR.Employee.Api.Apis.Employees.Validation;
 using MediatR;
 
 namespace HR.Employee.Api.Apis.Departments;
@@ -11,6 +13,7 @@ public class PostDepartmentEndpoint(IMediator mediator) : Endpoint<CreateDepartm
   {
     Post("api/departments");
     Description(x => x.WithTags("Departments"));
+    Validator<CreateDepartmentValidator>();
     AllowAnonymous();
   }
 
